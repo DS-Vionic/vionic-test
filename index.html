@@ -1,2 +1,468 @@
-<h1>Vionic Test</h1> 
-<p>Erster Änderung über VS Code</p>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vionic — Digitale Lösungen</title>
+<style>
+/* === TOKENS === */
+:root {
+  --ground:    #1a1a1a;
+  --text:      #f2f0ec;
+  --accent:    #f26419;
+  --border:    #2d2d2d;
+  --mid:       #88887e;
+  --light-bg:  #f8f6f3;
+  --light-text:#1a1a1a;
+  --light-sec: #5c5c57;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  background: var(--ground);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* === HEADER === */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: rgba(26, 26, 26, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  font-size: 1.125rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-list a {
+  color: var(--mid);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
+.nav-list .nav-cta {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.45rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.nav-list .nav-cta:hover,
+.nav-list .nav-cta:focus-visible {
+  color: #fff;
+  opacity: 0.87;
+}
+
+/* === HERO === */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 68px;
+  background:
+    radial-gradient(ellipse 900px 700px at 62% 52%, rgba(242, 100, 25, 0.05) 0%, transparent 68%),
+    var(--ground);
+}
+
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(6rem, 20vw, 22rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242, 100, 25, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+  animation: fadeUp 0.65s 0.1s ease-out both;
+}
+
+.hero-headline {
+  font-size: clamp(2.5rem, 5.4vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  max-width: 16ch;
+  margin-bottom: 1.75rem;
+  animation: fadeUp 0.65s 0.22s ease-out both;
+}
+
+.hero-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1.075rem;
+  color: var(--mid);
+  max-width: 52ch;
+  line-height: 1.72;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.65s 0.36s ease-out both;
+}
+
+.hero-rule {
+  width: 44px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.65s 0.48s ease-out both;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.025em;
+  padding: 0.9rem 2.25rem;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  animation: fadeUp 0.65s 0.58s ease-out both;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  opacity: 0.86;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === LEISTUNGEN === */
+
+.leistungen {
+  background: var(--light-bg);
+  padding: 7rem 2.5rem;
+}
+
+.leistungen-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 3.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.card {
+  background: #fff;
+  border-top: 3px solid var(--accent);
+  padding: 2.5rem 2rem 2.25rem;
+  border-radius: 0 0 4px 4px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+.card h3 {
+  font-size: 1.175rem;
+  font-weight: 800;
+  color: var(--light-text);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.875rem;
+}
+
+.card p {
+  font-size: 0.9375rem;
+  color: var(--light-sec);
+  line-height: 1.72;
+}
+
+/* === FOOTER === */
+
+.site-footer {
+  background: var(--ground);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2.5rem 2.5rem;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.footer-logo {
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.375rem;
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--mid);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding-top: 0.125rem;
+}
+
+.footer-links a {
+  color: var(--mid);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--text);
+}
+
+.footer-copy {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: #464642;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* === RESPONSIVE === */
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner { padding: 0 1.5rem; }
+  .nav-list { gap: 1rem; }
+  .nav-list li:nth-child(1),
+  .nav-list li:nth-child(2) { display: none; }
+  .hero-inner { padding: 5rem 1.5rem; }
+  .leistungen  { padding: 5rem 1.5rem; }
+  .site-footer { padding: 3rem 1.5rem 2rem; }
+  .footer-inner { flex-direction: column; }
+  .footer-links { flex-wrap: wrap; gap: 1.25rem; }
+}
+
+/* === REDUCED MOTION === */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .eyebrow,
+  .hero-headline,
+  .hero-sub,
+  .hero-rule,
+  .btn-primary { animation: none; }
+
+  .btn-primary,
+  .card { transition: none; }
+
+  .btn-primary:hover,
+  .card:hover { transform: none; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="#">Vionic</a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav-list">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#kontakt">Über uns</a></li>
+        <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-heading">
+  <span class="hero-watermark" aria-hidden="true">VIONIC</span>
+  <div class="hero-inner">
+    <p class="eyebrow">Technologie · Strategie · Wachstum</p>
+    <h1 class="hero-headline" id="hero-heading">
+      Wir bauen,<br>
+      was Ihr Unternehmen<br>
+      <em>wirklich braucht.</em>
+    </h1>
+    <p class="hero-sub">
+      Vionic entwickelt digitale Produkte und Systeme — von der ersten Idee bis zur skalierbaren Lösung. Kein Overhead. Kein Versprechen ohne Umsetzung.
+    </p>
+    <div class="hero-rule" aria-hidden="true"></div>
+    <a class="btn-primary" href="#leistungen">Projekt starten</a>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section class="leistungen" id="leistungen" aria-labelledby="leistungen-heading">
+  <div class="leistungen-inner">
+    <h2 class="section-label" id="leistungen-heading">Unsere Leistungen</h2>
+    <div class="cards">
+
+      <div class="card">
+        <!-- Crosshair / compass -->
+        <svg class="card-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="9" stroke="#f26419" stroke-width="2"/>
+          <line x1="20" y1="4"  x2="20" y2="11" stroke="#f26419" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="29" x2="20" y2="36" stroke="#f26419" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4"  y1="20" x2="11" y2="20" stroke="#f26419" stroke-width="2" stroke-linecap="round"/>
+          <line x1="29" y1="20" x2="36" y2="20" stroke="#f26419" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="2.5" fill="#f26419"/>
+        </svg>
+        <h3>Digitale Strategie</h3>
+        <p>Klarheit vor Code. Wir analysieren Ihre Ausgangslage, schärfen das Ziel und entwickeln den direkten Weg dorthin — ohne Umwege, ohne Schönwetterberatung.</p>
+      </div>
+
+      <div class="card">
+        <!-- Code brackets -->
+        <svg class="card-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="14,10 6,20 14,30"  stroke="#f26419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="26,10 34,20 26,30" stroke="#f26419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="18" y1="32" x2="22" y2="8" stroke="#f26419" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Softwareentwicklung</h3>
+        <p>Von der Web-App bis zur API-Plattform. Maßgeschneidert, dokumentiert, wartbar — und auf Wachstum ausgelegt, nicht auf das nächste Neubauprojekt.</p>
+      </div>
+
+      <div class="card">
+        <!-- Trend-up / growth -->
+        <svg class="card-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="5,31 14,22 22,26 35,11" stroke="#f26419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="28,11 35,11 35,18"       stroke="#f26419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Digitales Wachstum</h3>
+        <p>Systeme, die für Sie arbeiten. Automatisierung, Leadgenerierung, Performance-Tracking — messbar optimiert und kontinuierlich verbessert.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="kontakt">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Vionic</div>
+      <p class="footer-tagline">Digitale Lösungen. Klare Ergebnisse.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Impressum</a></li>
+      <li><a href="#">Datenschutz</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">© 2026 Vionic. Alle Rechte vorbehalten.</p>
+</footer>
+
+</body>
+</html>
