@@ -267,6 +267,80 @@ body {
   line-height: 1.72;
 }
 
+/* === KONTAKT === */
+
+.kontakt {
+  background: var(--ground);
+  padding: 7rem 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.kontakt-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.kontakt-intro {
+  font-size: 0.9375rem;
+  color: var(--mid);
+  line-height: 1.72;
+  margin-bottom: 3rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.form-group input,
+.form-group textarea {
+  background: #232323;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+  resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #4a4a46;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+
+.contact-form .btn-primary {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  animation: none;
+}
+
 /* === FOOTER === */
 
 .site-footer {
@@ -345,6 +419,7 @@ body {
   .nav-list li:nth-child(2) { display: none; }
   .hero-inner { padding: 5rem 1.5rem; }
   .leistungen  { padding: 5rem 1.5rem; }
+  .kontakt     { padding: 5rem 1.5rem; }
   .site-footer { padding: 3rem 1.5rem 2rem; }
   .footer-inner { flex-direction: column; }
   .footer-links { flex-wrap: wrap; gap: 1.25rem; }
@@ -448,8 +523,31 @@ body {
   </div>
 </section>
 
+<!-- KONTAKT -->
+<section class="kontakt" id="kontakt" aria-labelledby="kontakt-heading">
+  <div class="kontakt-inner">
+    <h2 class="section-label" id="kontakt-heading">Kontakt</h2>
+    <p class="kontakt-intro">Haben Sie ein Projekt oder eine Frage? Schreiben Sie uns — wir melden uns innerhalb von 24 Stunden.</p>
+    <form class="contact-form" novalidate>
+      <div class="form-group">
+        <label for="contact-name">Name</label>
+        <input type="text" id="contact-name" name="name" placeholder="Max Mustermann" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="contact-email">E-Mail</label>
+        <input type="email" id="contact-email" name="email" placeholder="max@beispiel.de" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Nachricht</label>
+        <textarea id="contact-message" name="message" rows="6" placeholder="Beschreiben Sie Ihr Projekt oder Ihre Frage …" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Nachricht senden</button>
+    </form>
+  </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="site-footer" id="kontakt">
+<footer class="site-footer">
   <div class="footer-inner">
     <div>
       <div class="footer-logo">Vionic</div>
